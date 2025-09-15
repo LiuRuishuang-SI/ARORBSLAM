@@ -22,7 +22,8 @@ RUN apt update && apt install -y \
         gnupg2 \
         lsb-release \
         build-essential \
-        locales
+        locales \
+        libpcl-dev
 
 # Install ROS 2 Iron
 RUN curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -o /usr/share/keyrings/ros-archive-keyring.gpg \
