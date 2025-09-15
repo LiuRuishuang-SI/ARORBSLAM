@@ -1,4 +1,6 @@
 /.vscode/
-/export/
+/.idea/
+
+/output/
 /data/
 /build/
