@@ -28,13 +28,9 @@ namespace arslam
                 Eigen::Vector3d p2 = pts[i2];
                 Eigen::Vector3d p3 = pts[i3];
 
-                // manual cross to avoid linker issue
                 Eigen::Vector3d v1 = p2 - p1;
                 Eigen::Vector3d v2 = p3 - p1;
-                Eigen::Vector3d n;
-                n[0] = v1[1] * v2[2] - v1[2] * v2[1];
-                n[1] = v1[2] * v2[0] - v1[0] * v2[2];
-                n[2] = v1[0] * v2[1] - v1[1] * v2[0];
+                Eigen::Vector3d n = v1.cross(v2);
 
                 if (n.norm() < 1e-8)
                     continue;
@@ -43,7 +39,7 @@ namespace arslam
 
                 int count = 0;
                 std::vector<int> inlier_idx;
-                for (int i = 0; i < (int)pts.size(); ++i)
+                for (int i = 0, iend = static_cast<int>(pts.size()); i < iend; ++i)
                 {
                     double dist_to_plane = std::abs(n.dot(pts[i]) + d);
                     if (dist_to_plane < distance_threshold)

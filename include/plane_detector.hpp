@@ -2,6 +2,8 @@
 #define _PLANE_DETECTOR_HPP_
 
 #include <Eigen/Core>
+#include <Eigen/Geometry> 
+
 #include <tuple>
 #include <vector>
 
